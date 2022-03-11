@@ -63,10 +63,25 @@
                
             }
         }
+        @keyframes blink {
+            0%{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
     </style>
     <audio src="results.mp3" id="results"></audio>
     <audio src="countdown.wav" id="countdown"></audio>
-    <img src="lock.png" alt="Apsauga" style="width: 30px; height: 30px; border-radius: 100%; position: absolute; background-color: white; right: 10px; top: 10px; display: none;" id="secured" onclick="unlock()">
+    <audio src="enter.wav" id="enter"></audio>
+    <audio src="alarm.wav" id="alarm"></audio>
+    <audio src="adele.mp3" id="adele"></audio>
+    <img src="lock.png" alt="Apsauga" style="width: 30px; height: 30px; border-radius: 5px; position: absolute; background-color: white; right: 10px; top: 10px; display: none;" id="secured" onclick="unlock()">
+    <img src="music.jpeg" alt="Muzika" style="width: 30px; height: 30px; border-radius: 5px; position: absolute; background-color: white; left: 10px; top: 10px; display: none;" id="muzika" onclick="muzika()">
     <h1 style="color: white; text-align: center;">Tinklas asistentas</h1>
     <div style="display: flex; justify-content: center; align-items: center;">
         <button class="wake"><img src="wakeUp.png" alt="Pakvietimas" onclick="wake()"></button>
@@ -129,6 +144,15 @@
             <p id="29" style="display: none;">29</p>
             <p id="30" style="display: none;">30</p>
         </div>
+        <div style="width: 100%; height: 450px; position: absolute; top: 0; left: 0; right: 0; display: none; justify-content: center; align-items: center; flex-direction: column;" id="music">
+            <img src="music.jpeg" alt="Muzika" style="width: 100px; height: 100px; border-radius: 15px;">
+            <p style="font-weight: 400; font-size: 20px; animation-duration: 2s; animation-timing-function: ease-in-out; animation-iteration-count: infinite;" id="muzikaAdele">Muzika - Adele</p>
+            <div style="width: 100%; display: flex; justify-content: center; align-items: center;">
+                <div style="width: 100px; height: 50px; display: none; justify-content: center; align-items: center; border-radius: 15px 0 0 15px; background-color: lightgray; margin-left: 5px;" id="play" onclick="play()">Leisti</div>
+                <div style="width: 100px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 15px 0 0 15px; background-color: lightgray; margin-left: 5px;" id="pause" onclick="pause()">Sustabdyti</div>
+                <div style="width: 100px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 0 15px 15px 0; background-color: lightgray; margin-left: 5px;" onclick="musicOff()">Išjungti</div>
+            </div>
+        </div>
         <p style="margin-top: 20px;" id="rasyti">Rašykite dabar</p>
         <p style="margin-top: 20px; display: none;" id="galvoti">Galvojama...</p>
         <p style="margin-top: 20px; display: none; color: red;" id="klaida">Šios komandos nesupratau.</p>
@@ -160,11 +184,12 @@
                 setTimeout(() => {document.getElementById("weather").style.display = "flex";}, 3100);
                 setTimeout(() => {document.getElementById('results').play();}, 3000);
                 }
-            else if(form.command.value == "namai")
+            else if(form.command.value == "Namai" || form.command.value == "namai" || form.command.value == "Signalizacija" || form.command.value == "signalizacija" || form.command.value == "apsauga" || form.command.value == "Apsauga" || form.command.value == "Įjunk apsaugą" || form.command.value == "Ijunk apsauga" || form.command.value == "įjunk apsaugą" || form.command.value == "ijunk apsauga" || form.command.value == "Įjungti apsaugą" || form.command.value == "Ijungti apsauga" || form.command.value == "įjungti apsaugą" || form.command.value == "ijungti apsauga" || form.command.value == "Įjunk signalizaciją" || form.command.value == "Ijunk signalizacija" || form.command.value == "įjunk signalizaciją" || form.command.value == "ijunk signalizacija" || form.command.value == "Įjungti signalizaciją" || form.command.value == "Ijungti signalizacija" || form.command.value == "įjungti signalizaciją" || form.command.value == "ijungti signalizacija")
                 {
                 document.getElementById("loading").style.webkitAnimationName = "suktis";
                 document.getElementById("rasyti").style.display = "none";
                 document.getElementById("galvoti").style.display = "block";
+                setTimeout(() => {document.getElementById("assistantClose").style.display = "none";}, 3000);
                 setTimeout(() => {document.getElementById("galvoti").style.display = "none";}, 3000);
                 setTimeout(() => {document.getElementById("loading").style.webkitAnimationName = "";}, 3000);
                 setTimeout(() => {document.getElementById("assistant").style.width = "100%";}, 3000);
@@ -280,12 +305,35 @@
                                   document.getElementById("assistant").style.right = "5%";
                                   document.getElementById("assistant").style.height = "200px";
                                   document.getElementById("assistant").style.bottom = "-300px";
-                                  document.getElementById("assistantClose").style.display = "none";
                                   document.getElementById("toliau").style.display = "block";
                                   document.getElementById("command").style.borderRadius = "15px 0 0 15px";
                                   document.getElementById("lock").style.display = "none";
                                   document.getElementById("rasyti").style.display = "block";
                                   document.getElementById("form").reset();}, 36100);
+                setTimeout(() => {document.getElementById("ijungiama").style.display = "block";}, 37100);
+                setTimeout(() => {document.getElementById("ijungta").style.display = "none";}, 37100);
+                }
+                else if(form.command.value == "Muzika" || form.command.value == "muzika" || form.command.value == "Paleisti muziką" || form.command.value == "paleisti muziką" || form.command.value == "Paleisti muzika" || form.command.value == "paleisti muzika" || form.command.value == "Paleisk muziką" || form.command.value == "Paleisk muzika" || form.command.value == "paleisk muziką" || form.command.value == "paleisk muzika")
+                {
+                document.getElementById("loading").style.webkitAnimationName = "suktis";
+                document.getElementById("rasyti").style.display = "none";
+                document.getElementById("galvoti").style.display = "block";
+                document.getElementById("pause").style.display = "flex";
+                document.getElementById("play").style.display = "none";
+                setTimeout(() => {document.getElementById("galvoti").style.display = "none";}, 3000);
+                setTimeout(() => {document.getElementById("loading").style.webkitAnimationName = "";}, 3000);
+                setTimeout(() => {document.getElementById("assistant").style.width = "100%";}, 3000);
+                setTimeout(() => {document.getElementById("assistant").style.borderRadius = "15px 15px 0 0";}, 3000);
+                setTimeout(() => {document.getElementById("assistant").style.bottom = "0";}, 3000);
+                setTimeout(() => {document.getElementById("assistant").style.left = "0";}, 3000);
+                setTimeout(() => {document.getElementById("assistant").style.right = "0";}, 3000);
+                setTimeout(() => {document.getElementById("assistant").style.height = "85%";}, 3000);
+                setTimeout(() => {document.getElementById("toliau").style.display = "none";}, 3000);
+                setTimeout(() => {document.getElementById("command").style.borderRadius = "15px";}, 3000);
+                setTimeout(() => {document.getElementById("music").style.display = "flex";}, 3100);
+                setTimeout(() => {document.getElementById("muzikaAdele").style.webkitAnimationName = "blink";}, 3100);
+                setTimeout(() => {document.getElementById('adele').play();}, 3500);
+                setTimeout(() => {document.getElementById("muzika").style.display = "block";}, 3500);
                 }
             else{
                 document.getElementById("loading").style.webkitAnimationName = "suktis";
@@ -297,6 +345,18 @@
                 setTimeout(() => {document.getElementById("rasyti").style.display = "block";}, 6000);
                 setTimeout(() => {document.getElementById("loading").style.webkitAnimationName = "";}, 3000);
             }
+        }
+        function pause() {
+            document.getElementById("pause").style.display = "none";
+            document.getElementById("play").style.display = "flex";
+            document.getElementById('adele').pause();
+            document.getElementById("muzikaAdele").style.webkitAnimationName = "";
+        }
+        function play() {
+            document.getElementById("pause").style.display = "flex";
+            document.getElementById("play").style.display = "none";
+            document.getElementById('adele').play();
+            document.getElementById("muzikaAdele").style.webkitAnimationName = "blink";
         }
         function unlock() {
             document.getElementById("rasyti").style.display = "none";
@@ -311,6 +371,12 @@
             document.getElementById("command").style.display = "none";
             document.getElementById("unlock").style.display = "flex";
             document.getElementById("command").style.borderRadius = "15px";
+            document.getElementById('enter').play();
+            setTimeout(() => {document.getElementById('alarm').play();}, 29000);
+            setTimeout(() => {document.getElementById('alarm').play();}, 57000);
+            setTimeout(() => {document.getElementById('alarm').play();}, 85000);
+            setTimeout(() => {document.getElementById('alarm').play();}, 113000);
+            setTimeout(() => {document.getElementById('alarm').play();}, 131000);
         }
         function atrakinta() {
             document.getElementById("isjungiama").style.display = "none";
@@ -330,10 +396,47 @@
                 setTimeout(() => {document.getElementById("command").style.display = "block";}, 3300);
                 setTimeout(() => {document.getElementById("unlock").style.display = "none";}, 3300);
                 setTimeout(() => {document.getElementById("secured").style.display = "none";}, 3300);
+                document.getElementById('enter').pause();
+                document.getElementById('alarm').pause();
+                setTimeout(() => {document.getElementById('alarm').pause();}, 3000);
+                setTimeout(() => {location.replace("index.html");}, 3600);
             }
         function wake() {
             setTimeout(() => {document.getElementById("assistant").style.bottom = "15px";}, 300);
             setTimeout(() => {document.getElementById("assistantClose").style.display = "block";}, 300);
+        }
+        function muzika() {
+                document.getElementById("rasyti").style.display = "none";
+                document.getElementById("assistant").style.width = "100%";
+                document.getElementById("assistant").style.borderRadius = "15px 15px 0 0";
+                document.getElementById("assistant").style.bottom = "0";
+                document.getElementById("assistant").style.left = "0";
+                document.getElementById("assistant").style.right = "0";
+                document.getElementById("assistant").style.height = "85%";
+                document.getElementById("assistantClose").style.display = "block";
+                document.getElementById("toliau").style.display = "none";
+                document.getElementById("command").style.display = "none";
+                setTimeout(() => {document.getElementById("music").style.display = "flex";}, 100);
+        }
+        function musicOff() {
+            document.getElementById("assistant").style.width = "90%";
+            document.getElementById("assistant").style.borderRadius = "15px";
+            document.getElementById("assistant").style.bottom = "15px";
+            document.getElementById("assistant").style.left = "5%";
+            document.getElementById("assistant").style.right = "5%";
+            document.getElementById("assistant").style.height = "200px";
+            document.getElementById("assistant").style.bottom = "-300px";
+            document.getElementById("assistantClose").style.display = "none";
+            document.getElementById("command").style.display = "block";
+            document.getElementById("toliau").style.display = "block";
+            document.getElementById("command").style.borderRadius = "15px 0 0 15px";
+            document.getElementById("weather").style.display = "none";
+            document.getElementById("music").style.display = "none";
+            document.getElementById("lock").style.display = "none";
+            document.getElementById("rasyti").style.display = "block";
+            document.getElementById('adele').pause();
+            document.getElementById("muzika").style.display = "none";
+            setTimeout(() => {location.replace("index.html");}, 300);
         }
         function assistantClose() {
             document.getElementById("assistant").style.width = "90%";
@@ -344,9 +447,11 @@
             document.getElementById("assistant").style.height = "200px";
             document.getElementById("assistant").style.bottom = "-300px";
             document.getElementById("assistantClose").style.display = "none";
+            document.getElementById("command").style.display = "block";
             document.getElementById("toliau").style.display = "block";
             document.getElementById("command").style.borderRadius = "15px 0 0 15px";
             document.getElementById("weather").style.display = "none";
+            document.getElementById("music").style.display = "none";
             document.getElementById("lock").style.display = "none";
             document.getElementById("rasyti").style.display = "block";
             document.getElementById("form").reset();
@@ -360,10 +465,14 @@
                 document.getElementById("assistant").style.height = "200px";
                 document.getElementById("toliau").style.display = "block";
                 document.getElementById("command").style.borderRadius = "15px 0 0 15px";
+                document.getElementById("command").style.display = "block";
                 document.getElementById("weather").style.display = "none";
+                document.getElementById("music").style.display = "none";
                 document.getElementById("rasyti").style.display = "block";
                 document.getElementById("lock").style.display = "none";
+                document.getElementById("unlock").style.display = "none";
                 document.getElementById("form").reset();
+                document.getElementById("assistantClose").style.display = "block";
         }
     </script>
 </body>
