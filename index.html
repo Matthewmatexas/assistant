@@ -156,6 +156,7 @@
         <p style="margin-top: 20px;" id="rasyti">Rašykite dabar</p>
         <p style="margin-top: 20px; display: none;" id="galvoti">Galvojama...</p>
         <p style="margin-top: 20px; display: none; color: red;" id="klaida">Šios komandos nesupratau.</p>
+        <p style="margin-top: 20px; display: none;" id="labas">Labas, Ieva! 👋</p>
         <form style="display: flex; justify-content: center; align-items: center; position: absolute; bottom: 85px;" id="form">
                      <input name="command" id="command" type="text" placeholder="..." aria-required="true" style="font-family: 'Poppins', sans-serif; text-align: center; width: 250px; height: 40px; border: 2px solid black; border-radius: 15px 0 0 15px; font-size: 25px; padding: 5px; transition: 0.3s;">
                          <button id="toliau" type="button" onclick="check(this.form)" style="font-family: 'Poppins', sans-serif; text-align: center; width: 50px; height: 54px; background-color: black; border: none; color: white; border-radius: 0 15px 15px 0;">OK</button>
@@ -335,6 +336,15 @@
                 setTimeout(() => {document.getElementById('adele').play();}, 3500);
                 setTimeout(() => {document.getElementById("muzika").style.display = "block";}, 3500);
                 }
+                else if(form.command.value == "Labas" || form.command.value == "labas" || form.command.value == "Labas!" || form.command.value == "labas!" || form.command.value == "Sveiki" || form.command.value == "Sveiki!" || form.command.value == "sveiki" || form.command.value == "sveiki!"){
+                    document.getElementById("loading").style.webkitAnimationName = "suktis";
+                    document.getElementById("rasyti").style.display = "none";
+                    document.getElementById("galvoti").style.display = "block";
+                    setTimeout(() => {document.getElementById("galvoti").style.display = "none";}, 3000);
+                    setTimeout(() => {document.getElementById("loading").style.webkitAnimationName = "";}, 3000);
+                    setTimeout(() => {document.getElementById("labas").style.display = "block";}, 3000);
+                    setTimeout(() => {document.getElementById('results').play();}, 3000);
+                }
             else{
                 document.getElementById("loading").style.webkitAnimationName = "suktis";
                 document.getElementById("rasyti").style.display = "none";
@@ -454,6 +464,7 @@
             document.getElementById("music").style.display = "none";
             document.getElementById("lock").style.display = "none";
             document.getElementById("rasyti").style.display = "block";
+            document.getElementById("labas").style.display = "none";
             document.getElementById("form").reset();
         }
         function reset() {
@@ -469,6 +480,7 @@
                 document.getElementById("weather").style.display = "none";
                 document.getElementById("music").style.display = "none";
                 document.getElementById("rasyti").style.display = "block";
+                document.getElementById("labas").style.display = "none";
                 document.getElementById("lock").style.display = "none";
                 document.getElementById("unlock").style.display = "none";
                 document.getElementById("form").reset();
