@@ -89,7 +89,7 @@
     <div style="width: 100%; height: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: none; z-index: 5;" id="assistantClose" onclick="assistantClose()"></div>
     <div id="assistant">
         <div id="unlock" style="display: none; justify-content: center; align-items: center; flex-direction: column; margin-top: 100px;">
-        <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; border-bottom-color: white; animation: suktis .7s linear infinite;">
+        <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; border-bottom-color: white; animation: suktis .7s linear infinite;" id="isjungiamaAps">
         </div>
         <img src="unlock.jpg" alt="Apsauga" style="width: 100px; height: 100px; border-radius: 100%; position: absolute; margin-top: -205px;">
         <p id="isjungiama">Pridėkite savo telefoną prie daviklio.</p>
@@ -107,11 +107,11 @@
             </div>
         </div>
         <div style="width: 100%; height: 450px; position: absolute; top: 0; left: 0; right: 0; display: none; justify-content: center; align-items: center; flex-direction: column;" id="lock">
-            <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; border-bottom-color: white; animation: suktis .7s linear infinite;">
+            <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; border-bottom-color: white; animation: suktis .7s linear infinite;" id="ijungiamaAps">
             </div>
             <img src="lock.png" alt="Apsauga" style="width: 100px; height: 100px; border-radius: 100%; position: absolute; margin-top: -125px;">
             <p style="font-weight: 400; font-size: 20px;" id="ijungiama">Įjungiama apsauga...</p>
-            <p style="font-weight: 400; font-size: 20px; display: none; color: green;" id="ijungta">Apsauga įjungta.</p>
+            <p style="font-weight: 400; font-size: 20px; display: none; color: red;" id="ijungta">Apsauga įjungta.</p>
             <p id="0" style="display: none; color: white;">0</p>
             <p id="1" style="display: none; color: red;">1</p>
             <p id="2" style="display: none; color: red;">2</p>
@@ -297,6 +297,7 @@
 
                 setTimeout(() => {document.getElementById("ijungiama").style.display = "none";}, 33100);
                 setTimeout(() => {document.getElementById("ijungta").style.display = "block";}, 33100);
+                setTimeout(() => {document.getElementById("ijungiamaAps").style.border = "5px solid red";}, 33100);
 
                 setTimeout(() => {document.getElementById("secured").style.display = "block";}, 36100);
                 setTimeout(() => {document.getElementById("assistant").style.width = "90%";
@@ -392,6 +393,7 @@
             document.getElementById("isjungiama").style.display = "none";
             document.getElementById("isjungta").style.display = "block";
             document.getElementById("atrakinta").style.backgroundColor = "green";
+            document.getElementById("isjungiamaAps").style.border = "5px solid green";
                 setTimeout(() => {document.getElementById("assistant").style.width = "90%";
                 document.getElementById("assistant").style.borderRadius = "15px";
                 document.getElementById("assistant").style.bottom = "-300px";
