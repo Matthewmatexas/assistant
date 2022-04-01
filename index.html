@@ -80,7 +80,7 @@
     <audio src="enter.wav" id="enter"></audio>
     <audio src="alarm.wav" id="alarm"></audio>
     <audio src="adele.mp3" id="adele"></audio>
-    <img src="lock.png" alt="Apsauga" style="width: 30px; height: 30px; border-radius: 5px; position: absolute; background-color: white; right: 10px; top: 10px; display: none;" id="secured" onclick="unlock()">
+    <img src="lock.png" alt="Apsauga" style="width: 30px; height: 30px; border-radius: 5px; position: absolute; background-color: white; bottom: 35px; right: 30%; display: none;" id="secured" onclick="unlock()">
     <img src="music.jpeg" alt="Muzika" style="width: 30px; height: 30px; border-radius: 5px; position: absolute; background-color: white; left: 10px; top: 10px; display: none;" id="muzika" onclick="muzika()">
     <h1 style="color: white; text-align: center;">Tinklas asistentas</h1>
     <div style="display: flex; justify-content: center; align-items: center;">
@@ -89,12 +89,19 @@
     <div style="width: 100%; height: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: none; z-index: 5;" id="assistantClose" onclick="assistantClose()"></div>
     <div id="assistant">
         <div id="unlock" style="display: none; justify-content: center; align-items: center; flex-direction: column; margin-top: 100px;">
-        <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; border-bottom-color: white; animation: suktis .7s linear infinite;" id="isjungiamaAps">
+        <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; animation: suktis .7s linear infinite; position: absolute; top: 70px;" id="isjungiamaAps">
         </div>
-        <img src="unlock.jpg" alt="Apsauga" style="width: 100px; height: 100px; border-radius: 100%; position: absolute; margin-top: -205px;">
-        <p id="isjungiama">Pridėkite savo telefoną prie daviklio.</p>
-        <p style="color: green; display: none;" id="isjungta">Apsauga išjungta.</p>
-        <div style="width: 100px; height: 100px; background-color: black; border-radius: 100%; margin-top: 50px;" onclick="atrakinta()" id="atrakinta"></div>
+        <img src="unlock.jpg" alt="Apsauga" style="width: 120px; height: 120px; border-radius: 100%; position: absolute; position: absolute; top: 75px; display: none;" id="apsImg2">
+        <p style="font-weight: 400; font-size: 20px; margin-top: 120px; color: red;" id="isjungtiApsauga">Apsauga įjungta</p>
+        <p style="color: black; display: none; font-weight: 400; font-size: 20px; margin-top: 120px;" id="daviklis">Pridėkite telefoną prie daviklio...</p>
+        <p style="color: green; display: none; font-weight: 400; font-size: 20px; margin-top: 120px;" id="isjungta">Apsauga išjungta</p>
+        <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid red; position: absolute; top: 70px;" id="hide3">
+        </div>
+        <img src="lock.png" alt="Apsauga" style="width: 120px; height: 120px; border-radius: 100%; position: absolute; top: 75px;" id="hide4">
+        <div style="width: 60px; height: 60px; border-radius: 100%; border: 3px solid green; position: absolute; top: 350px; display: flex; justify-content: center; align-items: center; transition: 0.3s;" id="isjungiamaAps2" onclick="safeModeOff()">
+            <img src="unlock.jpg" alt="Apsauga" style="width: 100%; height: 100%; border-radius: 100%;">
+        </div>
+        <div style="width: 100px; height: 100px; background-color: black; border-radius: 100%; margin-top: 50px; display: none;" onclick="atrakinta()" id="atrakinta"></div>
         </div>
         <div style="width: 100%; height: 450px; position: absolute; top: 0; left: 0; right: 0; display: none; justify-content: center; align-items: center; flex-direction: column;" id="weather">
             <img src="sunny.png" alt="Saulėta" style="width: 100px; height: 100px; border-radius: 100%;">
@@ -107,42 +114,50 @@
             </div>
         </div>
         <div style="width: 100%; height: 450px; position: absolute; top: 0; left: 0; right: 0; display: none; justify-content: center; align-items: center; flex-direction: column;" id="lock">
-            <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; border-bottom-color: white; animation: suktis .7s linear infinite;" id="ijungiamaAps">
+            <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid black; border-bottom-color: white; animation: suktis .7s linear infinite; opacity: 0; position: absolute; top: 70px;" id="ijungiamaAps">
             </div>
-            <img src="lock.png" alt="Apsauga" style="width: 100px; height: 100px; border-radius: 100%; position: absolute; margin-top: -125px;">
-            <p style="font-weight: 400; font-size: 20px;" id="ijungiama">Įjungiama apsauga...</p>
-            <p style="font-weight: 400; font-size: 20px; display: none; color: red;" id="ijungta">Apsauga įjungta.</p>
-            <p id="0" style="display: none; color: white;">0</p>
-            <p id="1" style="display: none; color: red;">1</p>
-            <p id="2" style="display: none; color: red;">2</p>
-            <p id="3" style="display: none; color: red;">3</p>
-            <p id="4" style="display: none; color: red;">4</p>
-            <p id="5" style="display: none; color: red;">5</p>
-            <p id="6" style="display: none; color: red;">6</p>
-            <p id="7" style="display: none; color: red;">7</p>
-            <p id="8" style="display: none; color: red;">8</p>
-            <p id="9" style="display: none; color: red;">9</p>
-            <p id="10" style="display: none; color: red;">10</p>
-            <p id="11" style="display: none;">11</p>
-            <p id="12" style="display: none;">12</p>
-            <p id="13" style="display: none;">13</p>
-            <p id="14" style="display: none;">14</p>
-            <p id="15" style="display: none;">15</p>
-            <p id="16" style="display: none;">16</p>
-            <p id="17" style="display: none;">17</p>
-            <p id="18" style="display: none;">18</p>
-            <p id="19" style="display: none;">19</p>
-            <p id="20" style="display: none;">20</p>
-            <p id="21" style="display: none;">21</p>
-            <p id="22" style="display: none;">22</p>
-            <p id="23" style="display: none;">23</p>
-            <p id="24" style="display: none;">24</p>
-            <p id="25" style="display: none;">25</p>
-            <p id="26" style="display: none;">26</p>
-            <p id="27" style="display: none;">27</p>
-            <p id="28" style="display: none;">28</p>
-            <p id="29" style="display: none;">29</p>
-            <p id="30" style="display: none;">30</p>
+            <img src="lock.png" alt="Apsauga" style="width: 115px; height: 115px; border-radius: 100%; display: none; position: absolute; top: 75px;" id="apsImg">
+            <div style="width: 120px; height: 120px; border-radius: 100%; border: 5px solid green; position: absolute; top: 70px;" id="hide1">
+            </div>
+            <img src="unlock.jpg" alt="Apsauga" style="width: 120px; height: 120px; border-radius: 100%; position: absolute; top: 75px;" id="hide2">
+            <p style="font-weight: 400; font-size: 20px; position: absolute; top: 200px; color: green;" id="isjungtaAps">Apsauga išjungta</p>
+            <p style="font-weight: 400; font-size: 20px; position: absolute; top: 200px; color: black; display: none;" id="ijungiama">Apsauga įjungiama...</p>
+            <div style="width: 60px; height: 60px; border-radius: 100%; border: 3px solid red; position: absolute; top: 350px; display: flex; justify-content: center; align-items: center; transition: 0.3s;" id="ijungiamaAps2" onclick="safeModeOn()">
+                <img src="lock.png" alt="Apsauga" style="width: 100%; height: 100%; border-radius: 100%;">
+            </div>
+
+            <p style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 200px;" id="ijungta">Apsauga įjungta</p>
+            <p id="0" style="font-weight: 400; font-size: 20px; display: none; color: white; position: absolute; top: 250px;">0</p>
+            <p id="1" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">1</p>
+            <p id="2" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">2</p>
+            <p id="3" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">3</p>
+            <p id="4" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">4</p>
+            <p id="5" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">5</p>
+            <p id="6" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">6</p>
+            <p id="7" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">7</p>
+            <p id="8" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">8</p>
+            <p id="9" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">9</p>
+            <p id="10" style="font-weight: 400; font-size: 20px; display: none; color: red; position: absolute; top: 250px;">10</p>
+            <p id="11" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">11</p>
+            <p id="12" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">12</p>
+            <p id="13" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">13</p>
+            <p id="14" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">14</p>
+            <p id="15" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">15</p>
+            <p id="16" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">16</p>
+            <p id="17" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">17</p>
+            <p id="18" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">18</p>
+            <p id="19" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">19</p>
+            <p id="20" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">20</p>
+            <p id="21" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">21</p>
+            <p id="22" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">22</p>
+            <p id="23" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">23</p>
+            <p id="24" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">24</p>
+            <p id="25" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">25</p>
+            <p id="26" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">26</p>
+            <p id="27" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">27</p>
+            <p id="28" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">28</p>
+            <p id="29" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">29</p>
+            <p id="30" style="font-weight: 400; font-size: 20px; display: none; position: absolute; top: 250px;">30</p>
         </div>
         <div style="width: 100%; height: 450px; position: absolute; top: 0; left: 0; right: 0; display: none; justify-content: center; align-items: center; flex-direction: column;" id="music">
             <img src="music.jpeg" alt="Muzika" style="width: 100px; height: 100px; border-radius: 15px;">
@@ -202,118 +217,6 @@
                 setTimeout(() => {document.getElementById("toliau").style.display = "none";}, 3000);
                 setTimeout(() => {document.getElementById("command").style.borderRadius = "15px";}, 3000);
                 setTimeout(() => {document.getElementById("lock").style.display = "flex";}, 3100);
-                setTimeout(() => {document.getElementById('countdown').play();}, 3000);
-                setTimeout(() => {document.getElementById("30").style.display = "block";}, 3100);
-
-                setTimeout(() => {document.getElementById("30").style.display = "none";}, 4100);
-                setTimeout(() => {document.getElementById("29").style.display = "block";}, 4100);
-
-                setTimeout(() => {document.getElementById("29").style.display = "none";}, 5100);
-                setTimeout(() => {document.getElementById("28").style.display = "block";}, 5100);
-
-                setTimeout(() => {document.getElementById("28").style.display = "none";}, 6100);
-                setTimeout(() => {document.getElementById("27").style.display = "block";}, 6100);
-
-                setTimeout(() => {document.getElementById("27").style.display = "none";}, 7100);
-                setTimeout(() => {document.getElementById("26").style.display = "block";}, 7100);
-
-                setTimeout(() => {document.getElementById("26").style.display = "none";}, 8100);
-                setTimeout(() => {document.getElementById("25").style.display = "block";}, 8100);
-
-                setTimeout(() => {document.getElementById("25").style.display = "none";}, 9100);
-                setTimeout(() => {document.getElementById("24").style.display = "block";}, 9100);
-
-                setTimeout(() => {document.getElementById("24").style.display = "none";}, 10100);
-                setTimeout(() => {document.getElementById("23").style.display = "block";}, 10100);
-
-                setTimeout(() => {document.getElementById("23").style.display = "none";}, 11100);
-                setTimeout(() => {document.getElementById("22").style.display = "block";}, 11100);
-
-                setTimeout(() => {document.getElementById("22").style.display = "none";}, 12100);
-                setTimeout(() => {document.getElementById("21").style.display = "block";}, 12100);
-
-                setTimeout(() => {document.getElementById("21").style.display = "none";}, 13100);
-                setTimeout(() => {document.getElementById("20").style.display = "block";}, 13100);
-
-                setTimeout(() => {document.getElementById("20").style.display = "none";}, 14100);
-                setTimeout(() => {document.getElementById("19").style.display = "block";}, 14100);
-
-                setTimeout(() => {document.getElementById("19").style.display = "none";}, 15100);
-                setTimeout(() => {document.getElementById("18").style.display = "block";}, 15100);
-
-                setTimeout(() => {document.getElementById("18").style.display = "none";}, 16100);
-                setTimeout(() => {document.getElementById("17").style.display = "block";}, 16100);
-
-                setTimeout(() => {document.getElementById("17").style.display = "none";}, 17100);
-                setTimeout(() => {document.getElementById("16").style.display = "block";}, 17100);
-
-                setTimeout(() => {document.getElementById("16").style.display = "none";}, 18100);
-                setTimeout(() => {document.getElementById("15").style.display = "block";}, 18100);
-
-                setTimeout(() => {document.getElementById("15").style.display = "none";}, 19100);
-                setTimeout(() => {document.getElementById("14").style.display = "block";}, 19100);
-
-                setTimeout(() => {document.getElementById("14").style.display = "none";}, 20100);
-                setTimeout(() => {document.getElementById("13").style.display = "block";}, 20100);
-
-                setTimeout(() => {document.getElementById("13").style.display = "none";}, 21100);
-                setTimeout(() => {document.getElementById("12").style.display = "block";}, 21100);
-
-                setTimeout(() => {document.getElementById("12").style.display = "none";}, 22100);
-                setTimeout(() => {document.getElementById("11").style.display = "block";}, 22100);
-
-                setTimeout(() => {document.getElementById("11").style.display = "none";}, 23100);
-                setTimeout(() => {document.getElementById("10").style.display = "block";}, 23100);
-
-                setTimeout(() => {document.getElementById("10").style.display = "none";}, 24100);
-                setTimeout(() => {document.getElementById("9").style.display = "block";}, 24100);
-
-                setTimeout(() => {document.getElementById("9").style.display = "none";}, 25100);
-                setTimeout(() => {document.getElementById("8").style.display = "block";}, 25100);
-
-                setTimeout(() => {document.getElementById("8").style.display = "none";}, 26100);
-                setTimeout(() => {document.getElementById("7").style.display = "block";}, 26100);
-
-                setTimeout(() => {document.getElementById("7").style.display = "none";}, 27100);
-                setTimeout(() => {document.getElementById("6").style.display = "block";}, 27100);
-
-                setTimeout(() => {document.getElementById("6").style.display = "none";}, 28100);
-                setTimeout(() => {document.getElementById("5").style.display = "block";}, 28100);
-
-                setTimeout(() => {document.getElementById("5").style.display = "none";}, 29100);
-                setTimeout(() => {document.getElementById("4").style.display = "block";}, 29100);
-
-                setTimeout(() => {document.getElementById("4").style.display = "none";}, 30100);
-                setTimeout(() => {document.getElementById("3").style.display = "block";}, 30100);
-
-                setTimeout(() => {document.getElementById("3").style.display = "none";}, 31100);
-                setTimeout(() => {document.getElementById("2").style.display = "block";}, 31100);
-
-                setTimeout(() => {document.getElementById("2").style.display = "none";}, 32100);
-                setTimeout(() => {document.getElementById("1").style.display = "block";}, 32100);
-
-                setTimeout(() => {document.getElementById("1").style.display = "none";}, 33100);
-                setTimeout(() => {document.getElementById("0").style.display = "block";}, 33100);
-
-                setTimeout(() => {document.getElementById("ijungiama").style.display = "none";}, 33100);
-                setTimeout(() => {document.getElementById("ijungta").style.display = "block";}, 33100);
-                setTimeout(() => {document.getElementById("ijungiamaAps").style.border = "5px solid red";}, 33100);
-
-                setTimeout(() => {document.getElementById("secured").style.display = "block";}, 36100);
-                setTimeout(() => {document.getElementById("assistant").style.width = "90%";
-                                  document.getElementById("assistant").style.borderRadius = "15px";
-                                  document.getElementById("assistant").style.bottom = "15px";
-                                  document.getElementById("assistant").style.left = "5%";
-                                  document.getElementById("assistant").style.right = "5%";
-                                  document.getElementById("assistant").style.height = "200px";
-                                  document.getElementById("assistant").style.bottom = "-300px";
-                                  document.getElementById("toliau").style.display = "block";
-                                  document.getElementById("command").style.borderRadius = "15px 0 0 15px";
-                                  document.getElementById("lock").style.display = "none";
-                                  document.getElementById("rasyti").style.display = "block";
-                                  document.getElementById("form").reset();}, 36100);
-                setTimeout(() => {document.getElementById("ijungiama").style.display = "block";}, 37100);
-                setTimeout(() => {document.getElementById("ijungta").style.display = "none";}, 37100);
                 }
                 else if(form.command.value == "Muzika" || form.command.value == "muzika" || form.command.value == "Paleisti muziką" || form.command.value == "paleisti muziką" || form.command.value == "Paleisti muzika" || form.command.value == "paleisti muzika" || form.command.value == "Paleisk muziką" || form.command.value == "Paleisk muzika" || form.command.value == "paleisk muziką" || form.command.value == "paleisk muzika")
                 {
@@ -371,6 +274,144 @@
             document.getElementById('adele').play();
             document.getElementById("muzikaAdele").style.webkitAnimationName = "blink";
         }
+        function safeModeOn() {
+            document.getElementById("ijungiamaAps2").style.top = "70px";
+            document.getElementById("ijungiamaAps2").style.width = "120px";
+            document.getElementById("ijungiamaAps2").style.height = "120px";
+            document.getElementById("ijungiamaAps2").style.border = "5px solid black";
+            setTimeout(() => {document.getElementById("isjungtaAps").style.display = "none";
+            document.getElementById("ijungiama").style.display = "block";}, 300);
+            setTimeout(() => {document.getElementById("ijungiamaAps").style.opacity = "1";}, 300);
+            setTimeout(() => {document.getElementById("apsImg").style.display = "block";}, 300);
+            setTimeout(() => {document.getElementById("ijungiamaAps2").style.display = "none";}, 300);
+            setTimeout(() => {document.getElementById("hide1").style.display = "none";}, 300);
+            setTimeout(() => {document.getElementById("hide2").style.display = "none";}, 300);
+            setTimeout(() => {document.getElementById('countdown').play();}, 300);
+                setTimeout(() => {document.getElementById("30").style.display = "block";}, 400);
+
+                setTimeout(() => {document.getElementById("30").style.display = "none";}, 1400);
+                setTimeout(() => {document.getElementById("29").style.display = "block";}, 1400);
+
+                setTimeout(() => {document.getElementById("29").style.display = "none";}, 2400);
+                setTimeout(() => {document.getElementById("28").style.display = "block";}, 2400);
+
+                setTimeout(() => {document.getElementById("28").style.display = "none";}, 3400);
+                setTimeout(() => {document.getElementById("27").style.display = "block";}, 3400);
+
+                setTimeout(() => {document.getElementById("27").style.display = "none";}, 4400);
+                setTimeout(() => {document.getElementById("26").style.display = "block";}, 4400);
+
+                setTimeout(() => {document.getElementById("26").style.display = "none";}, 5400);
+                setTimeout(() => {document.getElementById("25").style.display = "block";}, 5400);
+
+                setTimeout(() => {document.getElementById("25").style.display = "none";}, 6400);
+                setTimeout(() => {document.getElementById("24").style.display = "block";}, 6400);
+
+                setTimeout(() => {document.getElementById("24").style.display = "none";}, 7400);
+                setTimeout(() => {document.getElementById("23").style.display = "block";}, 7400);
+
+                setTimeout(() => {document.getElementById("23").style.display = "none";}, 8400);
+                setTimeout(() => {document.getElementById("22").style.display = "block";}, 8400);
+
+                setTimeout(() => {document.getElementById("22").style.display = "none";}, 9400);
+                setTimeout(() => {document.getElementById("21").style.display = "block";}, 9400);
+
+                setTimeout(() => {document.getElementById("21").style.display = "none";}, 10400);
+                setTimeout(() => {document.getElementById("20").style.display = "block";}, 10400);
+
+                setTimeout(() => {document.getElementById("20").style.display = "none";}, 11400);
+                setTimeout(() => {document.getElementById("19").style.display = "block";}, 11400);
+
+                setTimeout(() => {document.getElementById("19").style.display = "none";}, 12400);
+                setTimeout(() => {document.getElementById("18").style.display = "block";}, 12400);
+
+                setTimeout(() => {document.getElementById("18").style.display = "none";}, 13400);
+                setTimeout(() => {document.getElementById("17").style.display = "block";}, 13400);
+
+                setTimeout(() => {document.getElementById("17").style.display = "none";}, 14400);
+                setTimeout(() => {document.getElementById("16").style.display = "block";}, 14400);
+
+                setTimeout(() => {document.getElementById("16").style.display = "none";}, 15400);
+                setTimeout(() => {document.getElementById("15").style.display = "block";}, 15400);
+
+                setTimeout(() => {document.getElementById("15").style.display = "none";}, 16400);
+                setTimeout(() => {document.getElementById("14").style.display = "block";}, 16400);
+
+                setTimeout(() => {document.getElementById("14").style.display = "none";}, 17400);
+                setTimeout(() => {document.getElementById("13").style.display = "block";}, 17400);
+
+                setTimeout(() => {document.getElementById("13").style.display = "none";},18400);
+                setTimeout(() => {document.getElementById("12").style.display = "block";}, 18400);
+
+                setTimeout(() => {document.getElementById("12").style.display = "none";}, 19400);
+                setTimeout(() => {document.getElementById("11").style.display = "block";}, 19400);
+
+                setTimeout(() => {document.getElementById("11").style.display = "none";}, 20400);
+                setTimeout(() => {document.getElementById("10").style.display = "block";}, 20400);
+
+                setTimeout(() => {document.getElementById("10").style.display = "none";}, 21400);
+                setTimeout(() => {document.getElementById("9").style.display = "block";}, 21400);
+
+                setTimeout(() => {document.getElementById("9").style.display = "none";}, 22400);
+                setTimeout(() => {document.getElementById("8").style.display = "block";}, 22400);
+
+                setTimeout(() => {document.getElementById("8").style.display = "none";}, 23400);
+                setTimeout(() => {document.getElementById("7").style.display = "block";}, 23400);
+
+                setTimeout(() => {document.getElementById("7").style.display = "none";}, 24400);
+                setTimeout(() => {document.getElementById("6").style.display = "block";}, 24400);
+
+                setTimeout(() => {document.getElementById("6").style.display = "none";}, 25400);
+                setTimeout(() => {document.getElementById("5").style.display = "block";}, 25400);
+
+                setTimeout(() => {document.getElementById("5").style.display = "none";}, 26400);
+                setTimeout(() => {document.getElementById("4").style.display = "block";}, 26400);
+
+                setTimeout(() => {document.getElementById("4").style.display = "none";}, 27400);
+                setTimeout(() => {document.getElementById("3").style.display = "block";}, 27400);
+
+                setTimeout(() => {document.getElementById("3").style.display = "none";}, 28400);
+                setTimeout(() => {document.getElementById("2").style.display = "block";}, 28400);
+
+                setTimeout(() => {document.getElementById("2").style.display = "none";}, 29400);
+                setTimeout(() => {document.getElementById("1").style.display = "block";}, 29400);
+
+                setTimeout(() => {document.getElementById("1").style.display = "none";}, 30400);
+                setTimeout(() => {document.getElementById("0").style.display = "block";}, 30400);
+
+                setTimeout(() => {document.getElementById("ijungiama").style.display = "none";}, 30400);
+                setTimeout(() => {document.getElementById("ijungta").style.display = "block";}, 30400);
+                setTimeout(() => {document.getElementById("ijungiamaAps").style.border = "5px solid red";}, 30400);
+
+                setTimeout(() => {document.getElementById("secured").style.display = "block";}, 33400);
+                setTimeout(() => {document.getElementById("assistant").style.width = "90%";
+                                  document.getElementById("assistant").style.borderRadius = "15px";
+                                  document.getElementById("assistant").style.bottom = "15px";
+                                  document.getElementById("assistant").style.left = "5%";
+                                  document.getElementById("assistant").style.right = "5%";
+                                  document.getElementById("assistant").style.height = "200px";
+                                  document.getElementById("assistant").style.bottom = "-300px";
+                                  document.getElementById("toliau").style.display = "block";
+                                  document.getElementById("command").style.borderRadius = "15px 0 0 15px";
+                                  document.getElementById("lock").style.display = "none";
+                                  document.getElementById("rasyti").style.display = "block";
+                                  document.getElementById("form").reset();}, 33100);
+                setTimeout(() => {document.getElementById("ijungiama").style.display = "none";}, 34100);
+        }
+        function safeModeOff() {
+            document.getElementById("isjungiamaAps2").style.top = "70px";
+            document.getElementById("isjungiamaAps2").style.width = "120px";
+            document.getElementById("isjungiamaAps2").style.height = "120px";
+            document.getElementById("isjungiamaAps2").style.border = "5px solid black";
+            document.getElementById("isjungiamaAps").style.borderBottomColor = "white";
+            setTimeout(() => {document.getElementById("isjungtiApsauga").style.display = "none";
+            document.getElementById("daviklis").style.display = "block";}, 300);
+            setTimeout(() => {document.getElementById("atrakinta").style.display = "block";}, 300);
+            setTimeout(() => {document.getElementById("apsImg2").style.display = "block";}, 300);
+            setTimeout(() => {document.getElementById("isjungiamaAps2").style.display = "none";}, 300);
+            setTimeout(() => {document.getElementById("hide3").style.display = "none";}, 300);
+            setTimeout(() => {document.getElementById("hide4").style.display = "none";}, 300);
+        }
         function unlock() {
             document.getElementById("rasyti").style.display = "none";
             document.getElementById("galvoti").style.display = "none";
@@ -387,25 +428,13 @@
             document.getElementById('enter').play();
             setTimeout(() => {document.getElementById("atrakinta").style.backgroundColor = "red";}, 29000);
             setTimeout(() => {document.getElementById("isjungiamaAps").style.border = "5px solid red";}, 29000);
+            setTimeout(() => {document.getElementById("daviklis").style.color = "red";}, 29000);
             setTimeout(() => {document.getElementById("isjungiamaAps").style.borderBottomColor = "white";}, 29000);
             setTimeout(() => {document.getElementById('alarm').play();}, 29000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 40000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 51000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 62000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 73000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 84000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 95000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 106000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 117000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 128000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 139000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 150000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 161000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 172000);
-            setTimeout(() => {document.getElementById('alarm').play();}, 183000);
         }
         function atrakinta() {
-            document.getElementById("isjungiama").style.display = "none";
+            document.getElementById("isjungtiApsauga").style.display = "none";
+            document.getElementById("daviklis").style.display = "none";
             document.getElementById("isjungta").style.display = "block";
             document.getElementById("atrakinta").style.backgroundColor = "green";
             document.getElementById("isjungiamaAps").style.border = "5px solid green";
